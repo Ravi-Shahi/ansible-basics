@@ -1,0 +1,13 @@
+---
+- name: Ping azure ubuntu node
+  hosts: ubuntu-server
+  gather_facts: false
+  tasks:
+  - name: Pinging..
+    ping:
+    register: ping_result
+    ignore_unreachable: true
+  
+  - name: display ping result
+    debug:
+      var: ping_result
