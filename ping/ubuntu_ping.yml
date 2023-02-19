@@ -1,6 +1,6 @@
 ---
 - name: Ping azure ubuntu node
-  hosts: ubuntu-server
+  hosts: all
   gather_facts: false
   tasks:
   - name: Pinging..
@@ -11,3 +11,4 @@
   - name: display ping result
     debug:
       var: ping_result
+    when: ping_result.ping != "pong"
