@@ -11,8 +11,6 @@
       user: "{{ ansible_user }}"
       state: present
       key: "{{ lookup('file', secret_file) }}" 
-    vars:
-    
     notify: change state 
   handlers:
   - name: change state
