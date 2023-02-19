@@ -1,15 +1,18 @@
 ---
 - name: Setup Keyless/Passwordless authentication
   hosts: all
+  gather_facts: false
   ignore_unreachable: true
   vars_files:
    - secret.yml  
   tasks:
   - name: add key
     authorized_key:
-      user: ubuntu
+      user: "{{ ansible_user }}"
       state: present
       key: "{{ lookup('file', secret_file) }}" 
+    vars:
+    
     notify: change state 
   handlers:
   - name: change state
