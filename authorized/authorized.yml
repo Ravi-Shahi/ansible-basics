@@ -1,0 +1,17 @@
+---
+- name: Setup Keyless/Passwordless authentication
+  hosts: all
+  ignore_unreachable: true
+  vars_files:
+   - secret.yml  
+  tasks:
+  - name: add key
+    authorized_key:
+      user: ubuntu
+      state: present
+      key: "{{ lookup('file', secret_file) }}" 
+    notify: change state 
+  handlers:
+  - name: change state
+    debug:
+      msg: added successfully
