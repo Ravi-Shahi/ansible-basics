@@ -1,0 +1,35 @@
+---
+# tasks file for sum
+- name: adding numbers
+  debug:
+    msg: >
+      passed numbers are {{a}},{{b}}
+      sum of these number is {{a+b}}
+  register: sum_output
+
+- name: creating sum file ...
+  file:
+    path: ./sum/files/sum.txt
+    state: touch
+  delegate_to: localhost
+  notify: create msg
+  
+
+- name: inserting content...
+  copy:
+    dest: ./sum/files/sum.txt
+    content: "{{sum_output.msg}}"
+  delegate_to: localhost
+  notify: content msg
+
+
+- name: copying file
+  copy:
+    src: sum.txt
+    dest: /home/{{ansible_user}}/
+    follow: yes
+  register: copy_output
+
+- name: copy status
+  debug:
+    msg: "{{copy_output}}"

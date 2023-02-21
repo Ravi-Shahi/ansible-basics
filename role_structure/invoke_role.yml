@@ -1,0 +1,9 @@
+---
+- name: sum playbook
+  hosts: all
+  gather_facts: false
+  ignore_errors: true
+  tasks:
+  - name: calling sum role..
+    include_role:
+      name: sum

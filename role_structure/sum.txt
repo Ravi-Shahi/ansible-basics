@@ -1,0 +1,1 @@
+passed numbers are 6,9 sum of these number is 15

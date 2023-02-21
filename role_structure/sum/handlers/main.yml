@@ -1,0 +1,5 @@
+---
+# handlers file for sum
+- name: create msg
+  debug:
+    msg: file created successfully!
