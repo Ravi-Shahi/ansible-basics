@@ -1,0 +1,7 @@
+---
+os:
+- ubuntu
+- kali
+- win10
+- fedora
+- centOS

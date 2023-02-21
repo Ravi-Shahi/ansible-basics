@@ -1,0 +1,16 @@
+---
+- name: loop a list
+  hosts: all
+  gather_facts: false
+  vars_files: vars.yml
+  tasks:
+  - name: listing os
+    debug:
+      msg: "{{item}}"
+    loop: "{{os}}"
+  
+  - name: execute for win 10
+    debug:
+      msg: rebooting win10
+    loop: "{{os}}"
+    when: item == "win10"
